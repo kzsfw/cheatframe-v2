@@ -3,9 +3,9 @@ WORKING = true -- true to enable script
 function killSwitch()
     if not WORKING then
         game:GetService("StarterGui"):SetCore("SendNotification", {
-            Title = ">[KRNL V3]<";
+            Title = ">[CheatFrame 26.2]<";
             Text = "Sorry, the exploit is killswitched. Try again later!";
-            Duration = 5;
+            Duration = 10;
         })
         return false
     end
@@ -14,23 +14,23 @@ end
 
 if not killSwitch() then return end
 
-local synversion = "15.02.25"
-function getexecutorname() return "KRNL" end
+local cfver = "26.2"
+function getexecutorname() return "CheatFrame" end
 
--- makesit fucked ->> loadstring(game:HttpGet("https://raw.githubusercontent.com/skidsploiter/kernel-ui/refs/heads/main/env.lua"))() -- env
+-- DONT UNCOMMENT ->> loadstring(game:HttpGet("https://raw.githubusercontent.com/kzsfw/cheatframe-v2/refs/heads/main/env.lua"))() -- env
 -- SaladAPI ENV Enhancer | thanks to discord.gg/getsalad
 
 function iy() loadstring(game:HttpGet("https://raw.githubusercontent.com/edgeiy/infiniteyield/master/source"))() end
 
-function identifyexecutor() return 'KRNL', synversion end
+function identifyexecutor() return 'CheatFrame', cfver end
 
-getgenv().IS_KRNL_LOADED = false
+getgenv().IS_CheatFrame_LOADED = false
 local oldr = request 
 getgenv().request = function(options)
 	if options.Headers then
-		options.Headers["User-Agent"] = "KRNL/RobloxApp/" .. synversion
+		options.Headers["User-Agent"] = "CheatFrame/RobloxApp/" .. cfver
 	else
-		options.Headers = {["User-Agent"] = "KRNL/RobloxApp/" .. synversion}
+		options.Headers = {["User-Agent"] = "CheatFrame/RobloxApp/" .. cfver}
 	end
 	local response = oldr(options)
 	return response
@@ -55,7 +55,7 @@ getgenv().require = function(scr) -- not mine
 	assert(type(scr) == "number" or (typeof(scr) == "Instance" and scr.ClassName == "ModuleScript"), "Expected")
 	if (type(scr) == "number") then 
 		if not game:GetObjects('rbxassetid://' .. scr)[1] then 
-			warn("[ KRNL ]: Require failed: invalid asset ID")
+			warn("[ CheatFrame ]: Require failed: invalid asset ID")
 			return 
 		end
 		if typeof(game:GetObjects('rbxassetid://' .. scr)[1]) == "Instance" and game:GetObjects('rbxassetid://' .. scr)[1].ClassName == "ModuleScript" then
@@ -63,10 +63,10 @@ getgenv().require = function(scr) -- not mine
 				if game:GetObjects('rbxassetid://' .. scr)[1].Source ~= "" then 
 					return loadstring(game:GetObjects('rbxassetid://' .. scr)[1].Source)()
 				else 
-					warn("[ KRNL ]: Require failed: cant require a modulescript with no code")
+					warn("[ CheatFrame ]: Require failed: cant require a modulescript with no code")
 				end
 			else 
-				warn("[ KRNL ]: Require failed: require asset id failed")
+				warn("[ CheatFrame ]: Require failed: require asset id failed")
 			end
 		end
 		return
@@ -211,9 +211,9 @@ end, function()
 end)
 
 check("getaffiliateid", function()
-    return "KRNL"
+    return "CheatFrame"
 end, function()
-    assert(getgenv().getaffiliateid() == "KRNL", "getaffiliateid function test failed")
+    assert(getgenv().getaffiliateid() == "CheatFrame", "getaffiliateid function test failed")
 end)
 
 check("getplayer", function(name: string)
@@ -898,7 +898,7 @@ function Bridge:InternalRequest(body, timeout)
 			return
 		end
 
-		error("[KRNL Error]: Unknown error", 2)
+		error("[CheatFrame Error]: Unknown error", 2)
 		return
 	end
 
@@ -932,10 +932,10 @@ function Bridge:InternalRequest(body, timeout)
 	end)
 
 	if success and result then
-		error("[KRNL Error]: " .. tostring(result), 2)
+		error("[CheatFrame Error]: " .. tostring(result), 2)
 	end
 
-	error("[KRNL Error]: Unknown server error", 2)
+	error("[CheatFrame Error]: Unknown server error", 2)
 end
 
 function Bridge:request(options)
@@ -966,7 +966,7 @@ function Bridge:request(options)
 	end
 	return {
 		Success = false,
-		StatusMessage = "[KRNL Error]: webServer connection failed:  " .. self.serverUrl,
+		StatusMessage = "[CheatFrame Error]: webServer connection failed:  " .. self.serverUrl,
 		StatusCode = 599;
 		HttpError = Enum.HttpError.ConnectFail
 	}
@@ -1007,17 +1007,17 @@ if not shared.vulnsm then
 	end
 	getgenv().rconsoleclear = function()
 		Bridge:rconsole("cls") 
-		rconsolesettitle("KRNL is NOT fat!")
+		rconsolesettitle("CheatFrame is NOT fat!")
 	end
 	
 	getgenv().rconsolecreate = function()
 		Bridge:rconsole("crt")
-		rconsolesettitle("KRNL is NOT fat!")
+		rconsolesettitle("CheatFrame is NOT fat!")
 	end
 	
 	getgenv().rconsoledestroy = function()
 		Bridge:rconsole("dst")
-		rconsolesettitle("KRNL is NOT fat!")
+		rconsolesettitle("CheatFrame is NOT fat!")
 	end
 	
 	getgenv().rconsoleprint = function(...)
@@ -1026,7 +1026,7 @@ if not shared.vulnsm then
 			text = text .. tostring(v) .. " "
 		end
 		Bridge:rconsole("prt", text)
-		rconsolesettitle("KRNL is NOT fat!")
+		rconsolesettitle("CheatFrame is NOT fat!")
 	end
 	
 	getgenv().rconsoleinfo = function(...)
@@ -1035,7 +1035,7 @@ if not shared.vulnsm then
 			text = text .. tostring(v) .. " "
 		end
 		Bridge:rconsole("prt", "[ INFO ] " .. text)
-		rconsolesettitle("KRNL is NOT fat!")
+		rconsolesettitle("CheatFrame is NOT fat!")
 	end
 	
 	getgenv().rconsolewarn = function(...)
@@ -1044,15 +1044,15 @@ if not shared.vulnsm then
 			text = text .. tostring(v) .. " "
 		end
 		Bridge:rconsole("prt", "[ WARNING ] " .. text)
-		rconsolesettitle("KRNL is NOT fat!")
+		rconsolesettitle("CheatFrame is NOT fat!")
 	end
 	getgenv().rconsoleinput = function(text)
 		Bridge:rconsole("prt", "[ ERROR ] Input doesnt work")
-		rconsolesettitle("KRNL is NOT fat!")
+		rconsolesettitle("CheatFrame is NOT fat!")
 	end
 	getgenv().rconsoleerr = function(text)
 		Bridge:rconsole("prt", "[ ERROR ] " .. text)
-		rconsolesettitle("KRNL is NOT fat!")
+		rconsolesettitle("CheatFrame is NOT fat!")
 	end 
 	getgenv().rconsoleerror = getgenv().rconsoleerr 
 	getgenv().rconsolename = getgenv().rconsolesettitle
@@ -1341,7 +1341,7 @@ if not shared.vulnsm then
 			meta.__index = function(s,k)
 				if table.find(vulnFuncTbl, k) then 
 					return function()
-						error("[ KRNL ]: "..tostring(k).." isn't available.")
+						error("[ CheatFrame ]: "..tostring(k).." isn't available.")
 					end
 				elseif k == "GetObjects" or k == "LoadLocalAsset" or k == "LoadAsset" then
 					return function(self, id)
@@ -1438,7 +1438,7 @@ if not shared.vulnsm then
 			return oldlf(path)
 		end 
 	end
-	print("[ KRNL ]: Vulns mitigated.")
+	print("[ CheatFrame ]: Vulns mitigated.")
 	shared.vulnsm = true 
 end 
 getgenv().getscripts = function() 
@@ -1514,8 +1514,8 @@ getgenv().getscriptclosure = function(module)
         return copy
     end
 end
-print("[ KRNL ]: Added functions to the env.")
-getgenv().IS_KRNL_LOADED = true
+print("[ CheatFrame ]: Added functions to the env.")
+getgenv().IS_CheatFrame_LOADED = true
 
 -- this shit function makes my script fucked
 --[[pcall(function()
@@ -1525,7 +1525,7 @@ getgenv().IS_KRNL_LOADED = true
 
     for _, item in pairs(data) do
         if item.Synapse then
-            synversion = item.Synapse.exploit_version
+            cfver = item.Synapse.exploit_version
 	end
     end
 end)]]
@@ -1819,7 +1819,7 @@ G2L["1e"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]
 G2L["1e"]["TextSize"] = 15;
 G2L["1e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
 G2L["1e"]["Size"] = UDim2.new(0, 646, 0, 27);
-G2L["1e"]["Text"] = getexecutorname() .. " - "..synversion;
+G2L["1e"]["Text"] = getexecutorname() .. " - "..cfver;
 G2L["1e"]["Name"] = [[TitleSynapse]];
 G2L["1e"]["BackgroundTransparency"] = 1;
 
@@ -4572,7 +4572,7 @@ local function C_49()
 	end)
 	buttons.Execute.MouseButton1Up:Connect(function()
 		if not injected then
-			title.Text = getexecutorname() .. " - "..synversion.." (not injected! press attach)"
+			title.Text = getexecutorname() .. " - "..cfver.." (not injected! press attach)"
 		elseif injected == true then
 
 			local textbox = GetTextbox()
@@ -4582,22 +4582,22 @@ local function C_49()
 	end)
 	buttons.Attach.MouseButton1Up:Connect(function()
 		if not injected then
-			title.Text = getexecutorname() .. " - "..synversion.." (checking...)"
+			title.Text = getexecutorname() .. " - "..cfver.." (checking...)"
 			task.wait(0.8)
-			title.Text = getexecutorname() .. " - "..synversion.." (injecting...)"
+			title.Text = getexecutorname() .. " - "..cfver.." (injecting...)"
 			task.wait(2.3)
-			title.Text = getexecutorname() .. " - "..synversion.." (checking whitelist...)"
+			title.Text = getexecutorname() .. " - "..cfver.." (checking whitelist...)"
 			task.wait(1.6)
-			title.Text = getexecutorname() .. " - "..synversion.." (scanning...)"
+			title.Text = getexecutorname() .. " - "..cfver.." (scanning...)"
 			task.wait(1.3)
-			title.Text = getexecutorname() .. " - "..synversion.." (ready!)"
+			title.Text = getexecutorname() .. " - "..cfver.." (ready!)"
 			injected = true
 			task.wait(1)
-			title.Text = getexecutorname() .. " - "..synversion
+			title.Text = getexecutorname() .. " - "..cfver
 		else
-			title.Text = getexecutorname() .. " - "..synversion.." (already injected!)"
+			title.Text = getexecutorname() .. " - "..cfver.." (already injected!)"
 			task.wait(1)
-			title.Text = getexecutorname() .. " - "..synversion
+			title.Text = getexecutorname() .. " - "..cfver
 		end
 	end)
 
@@ -4641,8 +4641,8 @@ local function C_51()
 		module:AddScriptTabSave(script.Parent.scriptname.Text..".lua", module:GetActiveTextbox().Frame.Textbox.Text)
 		script.Parent.Visible = false
 		script.Parent.scriptname.Text = ''
-		makefolder("KRNL_Saved")
-		writefile("KRNL_Saved/"..script.Parent.scriptname.Text or 'script'..".lua", module:GetActiveTextbox().Frame.Textbox.Text)
+		makefolder("CheatFrame_Saved")
+		writefile("CheatFrame_Saved/"..script.Parent.scriptname.Text or 'script'..".lua", module:GetActiveTextbox().Frame.Textbox.Text)
 	end)
 
 	script.Parent.Close.MouseButton1Up:Connect(function()
@@ -4707,7 +4707,7 @@ local function C_71()
 				if v.Name == "Dex" then
 				loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/main/dex.lua"))()
 			elseif v.Name == "RemoteSpy" then
-				loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/main/SimpleSpyV3/main.lua"))()
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/main/SimpleSpy26.2/main.lua"))()
 			elseif v.Name == "UnnamedESP" then
 				pcall(function() loadstring(game:HttpGet('https://raw.githubusercontent.com/ic3w0lf22/Unnamed-ESP/master/UnnamedESP.lua'))() end)
 			elseif v.Name == "ScriptDumper" then
@@ -4816,11 +4816,11 @@ local function C_84()
 	local script = G2L["84"];
 	local module = require(script.Parent.Module)
     
-	for index, value in pairs(listfiles("KRNL_Saved")) do
+	for index, value in pairs(listfiles("CheatFrame_Saved")) do
     	print(value)
 		if isfile(value) then
 			task.wait(0.05)
-            local editedString = string.gsub(value, [[KRNL_Saved\]], "")
+            local editedString = string.gsub(value, [[CheatFrame_Saved\]], "")
 			module:AddScriptTabSave(editedString, readfile(value))
 		end
 	end
@@ -4984,7 +4984,7 @@ local function C_93()
 end;
 task.spawn(C_93);
 
-function loadenv() loadstring(game:HttpGet("https://raw.githubusercontent.com/skidsploiter/kernel-ui/refs/heads/main/env.lua"))() end
+function loadenv() loadstring(game:HttpGet("https://raw.githubusercontent.com/kzsfw/cheatframe-v2/refs/heads/main/env.lua"))() end
 
 -- 
 
@@ -4994,7 +4994,7 @@ function unc()
 end
 
 function getthreadidentity() return 3 end
-function reload() loadstring(game:HttpGet("https://github.com/skidsploiter/kernel-ui/blob/main/main.lua?raw=true"))() end
+function reload() loadstring(game:HttpGet("https://github.com/kzsfw/cheatframe-v2/blob/main/main.lua?raw=true"))() end
 
 loadenv()
 
