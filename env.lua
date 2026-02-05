@@ -1,15 +1,15 @@
 --[[
-  // KRNL Environment
-  // Made by the KRNL devs.
+  // CF Environment
+  // Made by the CF devs.
   // (most of it was made by raz <3)
   // If you use this and don't credit us, we can DMCA you.
-  // - The KRNL Developers
+  // - The CF Developers
 ]]
 
 --[[
-CURRENT: ENV Version 15
+CURRENT: ENV Version 26.2
 ]]
--- Made for KRNL
+-- Made for CF
 
 local Workspace = game:FindService("Workspace") or game.Workspace
 local RobloxWorkspace = game:FindService("Workspace") or game.Workspace
@@ -43,7 +43,7 @@ local RobloxTestService = cloneref(game:FindService("TestService"))
 --[[
 getgenv().gethui = function() -- thanks to salad for this
     local f = Instance.new("Folder")
-    f.name = "KRNL HUI"
+    f.name = "CF HUI"
     f.parent = game:GetService("CoreGui"):FindFirstChild("RobloxGui")
     return f
 end
@@ -643,4 +643,4 @@ check("setrbxclipboard", function()
     setrbxclipboard = setclipboard
 end)
 
-print("[ KRNL ENV ] Script successfully executed!")
+print("[ CF ENV ] Script successfully executed!")
